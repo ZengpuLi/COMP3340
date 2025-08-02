@@ -1,0 +1,9 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#f1f2f6"/>
+  <rect x="20" y="60" width="260" height="80" fill="#e1e1e1" rx="10"/>
+  <circle cx="80" cy="160" r="20" fill="#333"/>
+  <circle cx="220" cy="160" r="20" fill="#333"/>
+  <rect x="40" y="80" width="80" height="40" fill="#555" rx="5"/>
+  <text x="150" y="50" font-family="Arial" font-size="16" fill="#333" text-anchor="middle">Honda Civic 2019</text>
+  <text x="150" y="190" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Sport Sedan</text>
+</svg>

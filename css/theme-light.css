@@ -1,0 +1,1260 @@
+/* Light Theme - Light Minimal Style */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #4a4a4a;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+/* Color Scheme Variables */
+:root {
+    --primary-color: #6c757d;
+    --secondary-color: #17a2b8;
+    --accent-color: #fd7e14;
+    --light-gray: #f8f9fa;
+    --dark-gray: #6c757d;
+    --white: #ffffff;
+    --text-dark: #4a4a4a;
+    --text-light: #6c757d;
+    --background-color: #fafafa;
+    --card-background: #ffffff;
+    --border-color: #e9ecef;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 200;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    font-weight: 300;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    font-weight: 300;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    color: var(--text-dark);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.logo {
+    max-height: 60px;
+    width: auto;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+/* Theme Switcher */
+.theme-switcher {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.theme-select {
+    background-color: var(--white);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.theme-select option {
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+/* Navigation Styles */
+nav {
+    background-color: var(--white);
+    padding: 0;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
+    font-weight: 400;
+}
+
+nav a:hover {
+    background-color: var(--light-gray);
+    color: var(--secondary-color);
+}
+
+nav a.active {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    min-height: 70vh;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Sections */
+section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--light-gray);
+    border-radius: 6px;
+    border-left: 2px solid var(--secondary-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Lists */
+ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+}
+
+section ul li {
+    color: var(--text-dark);
+}
+
+/* Links */
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--light-gray);
+    color: var(--text-dark);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-color);
+}
+
+footer p {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+/* Contact Page Specific Styles */
+.contact-info div {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.contact-info h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Help Page FAQ Styles */
+.faq-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 4px;
+    border-left: 2px solid var(--secondary-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.faq-item h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Car Grid Styles */
+.cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.car-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+
+.car-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.car-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.car-details {
+    padding: 1.5rem;
+}
+
+.car-name {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.car-price {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.car-description {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.car-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.spec {
+    background-color: var(--light-gray);
+    color: var(--text-dark);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 300;
+    border: 1px solid var(--border-color);
+}
+
+.view-details-btn {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.view-details-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(23, 162, 184, 0.2);
+}
+
+.view-details-btn:active {
+    transform: translateY(0);
+}
+
+/* Special styling for fuel type specs */
+.spec.fuel-type {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* Error message styling */
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    border: 1px solid #f5c6cb;
+}
+
+.error-message h3 {
+    margin-bottom: 0.5rem;
+    color: #721c24;
+}
+
+/* No cars message styling */
+.no-cars-message {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    border: 2px dashed var(--border-color);
+}
+
+.no-cars-message h3 {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+/* Inventory stats styling */
+.inventory-stats {
+    background-color: var(--light-gray);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.inventory-stats p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Car meta information */
+.car-meta {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+/* Authentication Forms - Light Theme */
+.auth-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+
+.auth-form {
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    color: var(--primary-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(23, 162, 184, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.auth-btn {
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.auth-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(23, 162, 184, 0.2);
+}
+
+.auth-btn:active {
+    transform: translateY(0);
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.auth-links a {
+    color: var(--secondary-color);
+    font-weight: 400;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    border: 1px solid #c3e6cb;
+}
+
+.success-message h3 {
+    margin-bottom: 0.5rem;
+    color: #155724;
+}
+
+.demo-accounts {
+    background-color: var(--light-gray);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 2rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.demo-accounts h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.demo-accounts p {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Profile Page Styles - Light Theme */
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+
+.profile-info {
+    background-color: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item label {
+    font-weight: 400;
+    color: var(--primary-color);
+}
+
+.info-item span {
+    color: var(--text-dark);
+}
+
+.profile-form {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+    .profile-form h3 {
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    /* User greeting in navigation */
+    .user-greeting {
+        display: none;
+    }
+    
+    .user-greeting span {
+        color: var(--text-dark);
+        font-style: italic;
+        padding: 1rem;
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Mobile Navigation */
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 1rem;
+    }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--white);
+    }
+    
+    nav ul.show {
+        display: flex;
+    }
+    
+    nav li {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    nav a {
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    /* Header adjustments */
+    header {
+        padding: 1.5rem 1rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    /* Main content adjustments */
+    main {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cars-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .car-card {
+        margin: 0 0.5rem;
+    }
+    
+    .car-details {
+        padding: 1rem;
+    }
+    
+    .theme-switcher {
+        position: static;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .user-greeting.mobile-only {
+        display: block;
+    }
+}
+
+/* User Features Styling - Light Theme */
+/* Car Actions Container */
+.car-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.user-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Favorite Button - Light Theme */
+.favorite-btn {
+    background-color: var(--white);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 120px;
+}
+
+.favorite-btn:hover {
+    background-color: var(--light-gray);
+    border-color: var(--secondary-color);
+}
+
+.favorite-btn.favorited {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-color: var(--secondary-color);
+}
+
+.favorite-btn.favorited:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Purchase Button - Light Theme */
+.purchase-btn {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 120px;
+}
+
+.purchase-btn:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.purchased-btn {
+    background-color: #28a745;
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: not-allowed;
+    opacity: 0.8;
+    flex: 1;
+    min-width: 120px;
+}
+
+/* Favorites and Purchases Page Styles - Light Theme */
+.favorites-container,
+.purchases-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.favorites-stats,
+.purchase-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: var(--light-gray);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--secondary-color);
+    line-height: 1;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+/* No Favorites/Purchases Message - Light Theme */
+.no-favorites-message,
+.no-purchases-message {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--light-gray);
+    border-radius: 6px;
+    margin-top: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.no-favorites-message h3,
+.no-purchases-message h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.cta-link {
+    color: var(--secondary-color);
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.cta-link:hover {
+    text-decoration: underline;
+}
+
+/* Purchase Card Specific Styles - Light Theme */
+.purchases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.purchase-card {
+    background-color: var(--white);
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.purchase-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.purchase-details {
+    padding: 1.5rem;
+}
+
+.purchase-info {
+    background-color: var(--light-gray);
+    padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    border: 1px solid var(--border-color);
+}
+
+.purchase-info > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.purchase-info > div:last-child {
+    margin-bottom: 0;
+}
+
+.purchase-info .label {
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+.purchase-info .value {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.status-completed {
+    color: #28a745 !important;
+    font-weight: 500;
+}
+
+.purchase-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Purchase Summary - Light Theme */
+.purchase-summary {
+    background-color: var(--light-gray);
+    padding: 2rem;
+    border-radius: 6px;
+    margin-top: 3rem;
+    border: 1px solid var(--border-color);
+}
+
+.purchase-summary h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: var(--white);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.summary-label {
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+.summary-value {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+/* Responsive Design for User Features - Light Theme */
+@media (max-width: 768px) {
+    .user-actions {
+        flex-direction: column;
+    }
+    
+    .favorite-btn,
+    .purchase-btn,
+    .purchased-btn {
+        min-width: auto;
+    }
+    
+    .favorites-stats,
+    .purchase-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .purchases-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .purchase-actions {
+        flex-direction: column;
+    }
+}
+
+/* Video Integration Styles - Light Theme */
+.video-section {
+    margin: 3rem 0;
+    background: var(--light-gray);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+
+.video-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 400px;
+}
+
+.video-wrapper {
+    position: relative;
+    background: #000;
+    overflow: hidden;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.video-placeholder:hover {
+    transform: scale(1.01);
+}
+
+.video-poster {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #17a2b8 0%, #28a745 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.2) 100%);
+}
+
+.poster-content {
+    z-index: 2;
+    position: relative;
+}
+
+.poster-logo {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+
+.poster-title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.poster-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.play-button {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 auto;
+}
+
+.play-button:hover {
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.play-icon {
+    font-size: 1.2rem;
+    margin-right: 0.25rem;
+}
+
+.youtube-embed {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.youtube-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--white);
+    border-left: 1px solid var(--border-color);
+}
+
+.video-info h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.video-info p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.video-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.stat {
+    text-align: center;
+    padding: 1rem;
+    background: var(--light-gray);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: transform 0.2s ease;
+}
+
+.stat:hover {
+    transform: translateY(-1px);
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--secondary-color);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.cta-secondary {
+    background: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.cta-secondary:hover {
+    background: var(--secondary-color);
+    color: var(--white);
+}
+
+/* Video Container Animation */
+.video-container.in-view {
+    animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Video Styles - Light Theme */
+@media (max-width: 768px) {
+    .video-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-wrapper {
+        min-height: 250px;
+    }
+    
+    .video-info {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .poster-logo {
+        font-size: 3rem;
+    }
+    
+    .poster-title {
+        font-size: 2rem;
+    }
+    
+    .poster-subtitle {
+        font-size: 1rem;
+    }
+    
+    .video-stats {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .stat {
+        padding: 0.75rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    main {
+        margin: 0.5rem;
+        padding: 0.75rem;
+    }
+    
+    .cars-grid {
+        gap: 1rem;
+    }
+    
+    .car-name {
+        font-size: 1.2rem;
+    }
+    
+    .car-price {
+        font-size: 1.3rem;
+    }
+}

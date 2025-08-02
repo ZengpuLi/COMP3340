@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Trends - Used Car Purchase Website</title>
+    <link rel="stylesheet" href="../css/theme-default.css" id="theme-link">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        /* Market trends specific styles */
+        .trends-hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .trends-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .trends-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .chart-section {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .chart-header {
+            padding: 2rem;
+            background: var(--light-gray);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .chart-header h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .chart-header p {
+            color: var(--text-light);
+            margin: 0;
+        }
+        
+        .chart-container {
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .chart-control-btn {
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .chart-control-btn:hover {
+            border-color: var(--secondary-color);
+            background: var(--light-gray);
+        }
+        
+        .chart-control-btn.active {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .insight-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .insight-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .insight-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .insight-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: white;
+        }
+        
+        .insight-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .insight-metric {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .insight-description {
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .insight-trend {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .trend-up {
+            color: #27ae60;
+        }
+        
+        .trend-down {
+            color: #e74c3c;
+        }
+        
+        .trend-stable {
+            color: #f39c12;
+        }
+        
+        .market-summary {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid var(--border-color);
+        }
+        
+        .summary-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .summary-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .summary-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.25rem;
+        }
+        
+        .summary-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .data-disclaimer {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: #1565c0;
+        }
+        
+        .data-disclaimer h4 {
+            margin-bottom: 0.5rem;
+            color: #0d47a1;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .trends-hero {
+                padding: 3rem 1rem;
+            }
+            
+            .trends-hero h2 {
+                font-size: 2rem;
+            }
+            
+            .chart-container {
+                padding: 1rem;
+            }
+            
+            .chart-wrapper {
+                height: 300px;
+            }
+            
+            .chart-controls {
+                justify-content: center;
+            }
+            
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="theme-switcher">
+            <select id="theme-select" class="theme-select">
+                <option value="default">Default Theme</option>
+                <option value="dark">Dark Theme</option>
+                <option value="light">Light Theme</option>
+            </select>
+        </div>
+        <div class="logo-text" style="font-size: 2rem; font-weight: bold; color: #3498db; margin-bottom: 0.5rem;">🚗 AutoDeals</div>
+        <h1>Used Car Purchase Website</h1>
+        <p>Find Your Perfect Pre-Owned Vehicle</p>
+    </header>
+
+    <nav>
+        <button class="menu-toggle">☰</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="cars.php">Cars</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="market-trends.html" class="active">Market Trends</a></li>
+            <li><a href="calculator.php">Loan Calculator</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="help.php">Help</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="trends-hero">
+            <h2>📈 Used Car Market Trends</h2>
+            <p>Stay informed with the latest market data and pricing trends. Our comprehensive analysis helps you make informed decisions when buying or selling pre-owned vehicles.</p>
+        </section>
+
+        <div class="data-disclaimer">
+            <h4>📊 Market Data Information</h4>
+            <p>The data presented below represents sample market trends for demonstration purposes. In a production environment, this would display real-time market data from automotive industry sources and our sales database.</p>
+        </div>
+
+        <!-- Price Trends Chart -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <h3>💰 Average Used Car Prices (5-Year Trend)</h3>
+                <p>Track how used car prices have changed over the past five years across different vehicle categories.</p>
+            </div>
+            <div class="chart-container">
+                <div class="chart-controls">
+                    <button class="chart-control-btn active" data-chart="price-trends">5-Year Price Trends</button>
+                    <button class="chart-control-btn" data-chart="category-comparison">Category Comparison</button>
+                    <button class="chart-control-btn" data-chart="seasonal-trends">Seasonal Trends</button>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Volume Chart -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <h3>📊 Market Volume & Sales</h3>
+                <p>Analyze market activity and sales volumes to understand buying patterns and market demand.</p>
+            </div>
+            <div class="chart-container">
+                <div class="chart-controls">
+                    <button class="chart-control-btn active" data-chart="sales-volume">Monthly Sales Volume</button>
+                    <button class="chart-control-btn" data-chart="inventory-levels">Inventory Levels</button>
+                    <button class="chart-control-btn" data-chart="demand-supply">Supply vs Demand</button>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="volumeChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Insights -->
+        <section>
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">📋 Market Insights</h2>
+            
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-header">
+                        <div class="insight-icon">📈</div>
+                        <div class="insight-title">Average Price Change</div>
+                    </div>
+                    <div class="insight-metric">+12.5%</div>
+                    <div class="insight-description">
+                        Used car prices have increased by an average of 12.5% over the past year due to supply constraints and increased demand.
+                    </div>
+                    <div class="insight-trend trend-up">
+                        <span>↗️</span>
+                        <span>Trending upward</span>
+                    </div>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-header">
+                        <div class="insight-icon">🚗</div>
+                        <div class="insight-title">Most Popular Category</div>
+                    </div>
+                    <div class="insight-metric">SUVs</div>
+                    <div class="insight-description">
+                        SUVs continue to dominate the used car market, representing 35% of all sales in the past quarter.
+                    </div>
+                    <div class="insight-trend trend-stable">
+                        <span>→</span>
+                        <span>Stable demand</span>
+                    </div>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-header">
+                        <div class="insight-icon">⏱️</div>
+                        <div class="insight-title">Avg. Time on Market</div>
+                    </div>
+                    <div class="insight-metric">28 days</div>
+                    <div class="insight-description">
+                        Quality used cars are selling faster than ever, with an average of 28 days from listing to sale.
+                    </div>
+                    <div class="insight-trend trend-down">
+                        <span>↘️</span>
+                        <span>Decreasing (good for sellers)</span>
+                    </div>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-header">
+                        <div class="insight-icon">🔋</div>
+                        <div class="insight-title">Electric Vehicle Growth</div>
+                    </div>
+                    <div class="insight-metric">+45%</div>
+                    <div class="insight-description">
+                        Used electric vehicle sales have grown by 45% year-over-year as prices become more accessible.
+                    </div>
+                    <div class="insight-trend trend-up">
+                        <span>↗️</span>
+                        <span>Rapidly growing segment</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Summary -->
+        <div class="market-summary">
+            <h3 class="summary-title">📊 Current Market Summary</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-value">$28,450</div>
+                    <div class="summary-label">Average Used Car Price</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">1.2M</div>
+                    <div class="summary-label">Monthly Sales Volume</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">35,000</div>
+                    <div class="summary-label">Available Inventory</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">94%</div>
+                    <div class="summary-label">Customer Satisfaction</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">7.2%</div>
+                    <div class="summary-label">Annual Market Growth</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">85</div>
+                    <div class="summary-label">Average Vehicle Age (months)</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Used Car Purchase Website. All rights reserved.</p>
+        <p>123 Auto Sales Drive, Cartown, CA 12345 | Phone: (555) 123-4567</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/theme-switcher.js"></script>
+    
+    <script>
+        // Market data
+        const marketData = {
+            priceTrends: {
+                labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [
+                    {
+                        label: 'Overall Average',
+                        data: [22500, 21800, 25200, 28400, 29100, 28450],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'SUVs',
+                        data: [28000, 27200, 31500, 35200, 36800, 35900],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        tension: 0.4,
+                        fill: false
+                    },
+                    {
+                        label: 'Sedans',
+                        data: [19500, 18900, 21800, 24600, 25200, 24800],
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                        tension: 0.4,
+                        fill: false
+                    },
+                    {
+                        label: 'Trucks',
+                        data: [32000, 31200, 36800, 41200, 42500, 41800],
+                        borderColor: '#f39c12',
+                        backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                        tension: 0.4,
+                        fill: false
+                    }
+                ]
+            },
+            
+            categoryComparison: {
+                labels: ['SUVs', 'Sedans', 'Trucks', 'Hatchbacks', 'Coupes', 'Convertibles'],
+                datasets: [{
+                    label: 'Average Price',
+                    data: [35900, 24800, 41800, 22100, 28600, 45200],
+                    backgroundColor: [
+                        '#3498db',
+                        '#e74c3c',
+                        '#2ecc71',
+                        '#f39c12',
+                        '#9b59b6',
+                        '#1abc9c'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            
+            seasonalTrends: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        label: '2023',
+                        data: [28200, 27800, 29100, 30200, 31500, 32100, 31800, 30900, 29800, 28900, 27600, 26800],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.4
+                    },
+                    {
+                        label: '2024',
+                        data: [27200, 27900, 28800, 29900, 30800, 31200, 30800, 30100, 29200, 28600, 28100, 28450],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        tension: 0.4
+                    }
+                ]
+            },
+            
+            salesVolume: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Monthly Sales (thousands)',
+                    data: [980, 1050, 1200, 1350, 1420, 1380, 1290, 1250, 1180, 1100, 950, 850],
+                    backgroundColor: 'rgba(52, 152, 219, 0.8)',
+                    borderColor: '#3498db',
+                    borderWidth: 2,
+                    borderRadius: 4
+                }]
+            },
+            
+            inventoryLevels: {
+                labels: ['Q1 2023', 'Q2 2023', 'Q3 2023', 'Q4 2023', 'Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024'],
+                datasets: [
+                    {
+                        label: 'Available Inventory',
+                        data: [42000, 38500, 35200, 31800, 29500, 28200, 32100, 35000],
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.2)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Optimal Level',
+                        data: [40000, 40000, 40000, 40000, 40000, 40000, 40000, 40000],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'transparent',
+                        borderDash: [5, 5],
+                        tension: 0
+                    }
+                ]
+            }
+        };
+
+        let priceChart, volumeChart;
+
+        function initCharts() {
+            // Initialize price chart
+            const priceCtx = document.getElementById('priceChart').getContext('2d');
+            priceChart = new Chart(priceCtx, {
+                type: 'line',
+                data: marketData.priceTrends,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Used Car Price Trends (2019-2024)',
+                            font: { size: 16 }
+                        },
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    }
+                }
+            });
+
+            // Initialize volume chart
+            const volumeCtx = document.getElementById('volumeChart').getContext('2d');
+            volumeChart = new Chart(volumeCtx, {
+                type: 'bar',
+                data: marketData.salesVolume,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Monthly Sales Volume (2024)',
+                            font: { size: 16 }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart(chartInstance, chartType, newData) {
+            chartInstance.data = newData;
+            
+            // Update chart type if needed
+            if (chartType === 'category-comparison') {
+                chartInstance.config.type = 'doughnut';
+                chartInstance.options.plugins.title.text = 'Price Comparison by Vehicle Category';
+            } else if (chartType === 'seasonal-trends') {
+                chartInstance.config.type = 'line';
+                chartInstance.options.plugins.title.text = 'Seasonal Price Trends';
+            } else if (chartType === 'price-trends') {
+                chartInstance.config.type = 'line';
+                chartInstance.options.plugins.title.text = 'Used Car Price Trends (2019-2024)';
+            } else if (chartType === 'inventory-levels') {
+                chartInstance.config.type = 'line';
+                chartInstance.options.plugins.title.text = 'Inventory Levels vs Optimal';
+            } else if (chartType === 'demand-supply') {
+                chartInstance.config.type = 'bar';
+                chartInstance.options.plugins.title.text = 'Supply vs Demand Analysis';
+                // Create sample demand vs supply data
+                chartInstance.data = {
+                    labels: ['SUVs', 'Sedans', 'Trucks', 'Hatchbacks', 'Coupes'],
+                    datasets: [
+                        {
+                            label: 'Supply',
+                            data: [8500, 12200, 6800, 9200, 4500],
+                            backgroundColor: 'rgba(231, 76, 60, 0.8)'
+                        },
+                        {
+                            label: 'Demand',
+                            data: [11200, 9800, 8900, 7500, 5800],
+                            backgroundColor: 'rgba(52, 152, 219, 0.8)'
+                        }
+                    ]
+                };
+            }
+            
+            chartInstance.update();
+        }
+
+        // Event listeners for chart controls
+        document.addEventListener('DOMContentLoaded', function() {
+            initCharts();
+
+            // Price chart controls
+            document.querySelectorAll('.chart-control-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const chartType = this.dataset.chart;
+                    const parentSection = this.closest('.chart-section');
+                    
+                    // Update active state for this section
+                    parentSection.querySelectorAll('.chart-control-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Update appropriate chart
+                    if (parentSection.querySelector('#priceChart')) {
+                        // Price chart section
+                        switch(chartType) {
+                            case 'price-trends':
+                                updateChart(priceChart, chartType, marketData.priceTrends);
+                                break;
+                            case 'category-comparison':
+                                updateChart(priceChart, chartType, marketData.categoryComparison);
+                                break;
+                            case 'seasonal-trends':
+                                updateChart(priceChart, chartType, marketData.seasonalTrends);
+                                break;
+                        }
+                    } else if (parentSection.querySelector('#volumeChart')) {
+                        // Volume chart section
+                        switch(chartType) {
+                            case 'sales-volume':
+                                updateChart(volumeChart, chartType, marketData.salesVolume);
+                                break;
+                            case 'inventory-levels':
+                                updateChart(volumeChart, chartType, marketData.inventoryLevels);
+                                break;
+                            case 'demand-supply':
+                                updateChart(volumeChart, chartType, null);
+                                break;
+                        }
+                    }
+                });
+            });
+
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideInUp 0.6s ease-out';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe chart sections and insight cards
+            document.querySelectorAll('.chart-section, .insight-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Add slideInUp animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#f1f2f6"/>
+  <rect x="20" y="55" width="260" height="85" fill="#808080" rx="10"/>
+  <circle cx="80" cy="155" r="20" fill="#333"/>
+  <circle cx="220" cy="155" r="20" fill="#333"/>
+  <rect x="40" y="75" width="80" height="45" fill="#555" rx="5"/>
+  <rect x="180" y="85" width="70" height="35" fill="#666" rx="3"/>
+  <text x="150" y="45" font-family="Arial" font-size="16" fill="#333" text-anchor="middle">Kia Sorento 2019</text>
+  <text x="150" y="190" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">3-Row SUV</text>
+</svg>

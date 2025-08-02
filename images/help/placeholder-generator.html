@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Help Screenshot Placeholder Generator</title>
+    <style>
+        .container { max-width: 800px; margin: 20px auto; padding: 20px; font-family: Arial, sans-serif; }
+        .screenshot { margin: 20px 0; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+        .mockup { background: #f5f5f5; padding: 20px; text-align: center; color: #666; }
+        .browser-bar { background: #e1e1e1; padding: 10px; text-align: left; font-size: 12px; }
+        .button { background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 4px; margin: 5px; }
+        .highlight { background: #fffbdd; border: 2px solid #f39c12; padding: 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>AutoDeals Help Screenshot Placeholders</h2>
+        <p>These are placeholder mockups for help documentation screenshots. In production, these would be replaced with actual screenshots of the AutoDeals interface.</p>
+        
+        <div class="screenshot" id="register-navigation">
+            <div class="browser-bar">autodeals.com</div>
+            <div class="mockup" style="height: 100px;">
+                <div class="highlight" style="display: inline-block;">Register</div>
+                <span style="margin: 0 10px;">|</span>
+                <span>Login</span>
+                <span style="margin: 0 10px;">|</span>
+                <span>Cars</span>
+                <span style="margin: 0 10px;">|</span>
+                <span>Help</span>
+                <br><br>
+                <small>Navigation showing Register link highlighted</small>
+            </div>
+        </div>
+        
+        <div class="screenshot" id="registration-form">
+            <div class="browser-bar">autodeals.com/register.php</div>
+            <div class="mockup" style="height: 200px;">
+                <h3>Create Account</h3>
+                <input type="text" placeholder="Username" style="display: block; margin: 5px auto; padding: 8px; width: 200px;">
+                <input type="email" placeholder="Email" style="display: block; margin: 5px auto; padding: 8px; width: 200px;">
+                <input type="password" placeholder="Password" style="display: block; margin: 5px auto; padding: 8px; width: 200px;">
+                <input type="password" placeholder="Confirm Password" style="display: block; margin: 5px auto; padding: 8px; width: 200px;">
+                <button class="button">Create Account</button>
+                <br><small>Registration form with all fields highlighted</small>
+            </div>
+        </div>
+        
+        <div class="screenshot" id="car-grid-view">
+            <div class="browser-bar">autodeals.com/cars.php</div>
+            <div class="mockup" style="height: 200px;">
+                <h3>Our Car Inventory</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; max-width: 300px; margin: 0 auto;">
+                    <div style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+                        <div style="background: #ddd; height: 60px; margin-bottom: 5px;"></div>
+                        <small>2020 Honda Civic<br>$18,500</small>
+                    </div>
+                    <div style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+                        <div style="background: #ddd; height: 60px; margin-bottom: 5px;"></div>
+                        <small>2019 Toyota Camry<br>$21,000</small>
+                    </div>
+                    <div style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+                        <div style="background: #ddd; height: 60px; margin-bottom: 5px;"></div>
+                        <small>2021 Ford Focus<br>$16,800</small>
+                    </div>
+                </div>
+                <br><small>Car inventory grid showing multiple vehicles</small>
+            </div>
+        </div>
+        
+        <div class="screenshot" id="calculator-form">
+            <div class="browser-bar">autodeals.com/calculator.php</div>
+            <div class="mockup" style="height: 180px;">
+                <h3>💰 Loan Calculator</h3>
+                <div style="max-width: 300px; margin: 0 auto;">
+                    <label>Vehicle Price: <input type="text" value="$25,000" style="padding: 5px; margin-left: 10px;"></label><br><br>
+                    <label>Down Payment: <input type="text" value="$5,000" style="padding: 5px; margin-left: 10px;"></label><br><br>
+                    <label>Loan Term: <input type="text" value="5 years" style="padding: 5px; margin-left: 10px;"></label><br><br>
+                    <label>Interest Rate: <input type="text" value="4.5%" style="padding: 5px; margin-left: 10px;"></label><br><br>
+                    <button class="button">Calculate Payment</button>
+                </div>
+                <br><small>Loan calculator form with sample values</small>
+            </div>
+        </div>
+        
+        <div class="screenshot" id="theme-switcher-location">
+            <div class="browser-bar">autodeals.com</div>
+            <div class="mockup" style="height: 80px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>🚗 AutoDeals</div>
+                    <div class="highlight">
+                        <select style="padding: 5px;">
+                            <option>Default Theme</option>
+                            <option>Dark Theme</option>
+                            <option>Light Theme</option>
+                        </select>
+                    </div>
+                </div>
+                <br><small>Header showing theme switcher dropdown highlighted</small>
+            </div>
+        </div>
+        
+        <p><strong>Instructions for Production:</strong></p>
+        <ul>
+            <li>Replace these placeholder mockups with actual screenshots of the AutoDeals website</li>
+            <li>Use browser developer tools or screenshot software to capture clean interface images</li>
+            <li>Highlight relevant UI elements with colored borders or annotations</li>
+            <li>Ensure screenshots are clear and readable at various sizes</li>
+            <li>Update file names in help sections to match actual screenshot filenames</li>
+        </ul>
+        
+        <p><strong>Recommended Screenshot Files:</strong></p>
+        <ul>
+            <li>register-navigation.png - Navigation with Register highlighted</li>
+            <li>registration-form.png - Complete registration form</li>
+            <li>login-navigation.png - Navigation with Login highlighted</li>
+            <li>login-form.png - Login form interface</li>
+            <li>user-dashboard.png - User dashboard after login</li>
+            <li>cars-navigation.png - Navigation with Cars highlighted</li>
+            <li>car-grid-view.png - Car inventory grid display</li>
+            <li>search-filters.png - Search filter panel</li>
+            <li>car-listing-details.png - Detailed car listing view</li>
+            <li>inquiry-button.png - Car listing with inquiry button highlighted</li>
+            <li>inquiry-form.png - Complete car inquiry form</li>
+            <li>phone-contact.png - Contact information display</li>
+            <li>calculator-navigation.png - Navigation with Calculator highlighted</li>
+            <li>calculator-form.png - Loan calculator form</li>
+            <li>calculator-results.png - Calculator results display</li>
+            <li>theme-switcher-location.png - Header with theme switcher highlighted</li>
+            <li>theme-comparison.png - Side-by-side theme comparison</li>
+            <li>mobile-theme-switcher.png - Mobile theme switcher interface</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+AutoDeals Logo Placeholder
+This file represents where the logo image will be placed.
+Recommended: Create a 200x60px logo image and save as logo.png

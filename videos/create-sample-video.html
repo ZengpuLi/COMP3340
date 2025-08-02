@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Video Generator - AutoDeals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        .video-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .cta {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+        .canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sample Video Generator for AutoDeals</h1>
+    <p>This creates a sample promotional video frame that can be used as a placeholder.</p>
+    
+    <canvas id="videoCanvas" class="canvas" width="1280" height="720"></canvas>
+    
+    <div style="margin: 2rem 0;">
+        <button onclick="generateFrame()" style="background: #667eea; color: white; border: none; padding: 1rem 2rem; border-radius: 6px; cursor: pointer; font-size: 1rem;">
+            Generate Sample Frame
+        </button>
+        <button onclick="downloadFrame()" style="background: #28a745; color: white; border: none; padding: 1rem 2rem; border-radius: 6px; cursor: pointer; font-size: 1rem; margin-left: 1rem;">
+            Download as Image
+        </button>
+    </div>
+    
+    <div class="video-container" style="display: none;" id="videoPreview">
+        <div class="logo">🚗</div>
+        <div class="title">AutoDeals</div>
+        <div class="subtitle">Find Your Perfect Pre-Owned Vehicle</div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🔍</div>
+                <div>Extensive Search</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <div>Best Prices</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">✅</div>
+                <div>Quality Assured</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <div>Easy Online</div>
+            </div>
+        </div>
+        
+        <div class="cta">
+            Visit AutoDeals Today!
+        </div>
+    </div>
+    
+    <script>
+        function generateFrame() {
+            const canvas = document.getElementById('videoCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add logo
+            ctx.font = 'bold 72px Arial';
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.fillText('🚗', canvas.width/2, 150);
+            
+            // Add title
+            ctx.font = 'bold 64px Arial';
+            ctx.fillText('AutoDeals', canvas.width/2, 250);
+            
+            // Add subtitle
+            ctx.font = '36px Arial';
+            ctx.fillText('Find Your Perfect Pre-Owned Vehicle', canvas.width/2, 320);
+            
+            // Add features
+            const features = [
+                {icon: '🔍', text: 'Extensive Search'},
+                {icon: '💰', text: 'Best Prices'},
+                {icon: '✅', text: 'Quality Assured'},
+                {icon: '📱', text: 'Easy Online'}
+            ];
+            
+            const startX = canvas.width/2 - 400;
+            features.forEach((feature, index) => {
+                const x = startX + (index * 200);
+                const y = 450;
+                
+                // Feature background
+                ctx.fillStyle = 'rgba(255,255,255,0.1)';
+                ctx.fillRect(x - 80, y - 60, 160, 120);
+                
+                // Feature icon
+                ctx.font = '48px Arial';
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                ctx.fillText(feature.icon, x, y);
+                
+                // Feature text
+                ctx.font = '18px Arial';
+                ctx.fillText(feature.text, x, y + 40);
+            });
+            
+            // Add CTA
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.fillRect(canvas.width/2 - 200, 580, 400, 80);
+            
+            ctx.font = 'bold 32px Arial';
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.fillText('Visit AutoDeals Today!', canvas.width/2, 635);
+            
+            // Add website URL
+            ctx.font = '24px Arial';
+            ctx.fillText('www.autodeals.com', canvas.width/2, 680);
+        }
+        
+        function downloadFrame() {
+            const canvas = document.getElementById('videoCanvas');
+            const link = document.createElement('a');
+            link.download = 'autodeals-promotional-frame.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Generate initial frame
+        generateFrame();
+    </script>
+</body>
+</html>

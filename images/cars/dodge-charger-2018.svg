@@ -1,0 +1,10 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#f1f2f6"/>
+  <rect x="20" y="60" width="260" height="80" fill="#dc143c" rx="8"/>
+  <circle cx="80" cy="158" r="20" fill="#333"/>
+  <circle cx="220" cy="158" r="20" fill="#333"/>
+  <rect x="40" y="80" width="80" height="40" fill="#000" rx="5"/>
+  <rect x="180" y="88" width="70" height="24" fill="#800000" rx="3"/>
+  <text x="150" y="50" font-family="Arial" font-size="16" fill="#333" text-anchor="middle">Dodge Charger 2018</text>
+  <text x="150" y="190" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Muscle Sedan</text>
+</svg>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Used Cars for Sale - Best Deals on Pre-Owned Vehicles | AutoDeals</title>
+    <meta name="description" content="Find your perfect used car at AutoDeals. Browse our extensive inventory of quality pre-owned vehicles with transparent pricing, financing options, and excellent customer service.">
+    <meta name="keywords" content="used cars, car sales, buy used car online, pre-owned vehicles, car dealership, auto sales, car financing, best used car deals">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="AutoDeals Team">
+    <link rel="canonical" href="https://autodeals.com/">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Quality Used Cars for Sale - Best Deals on Pre-Owned Vehicles">
+    <meta property="og:description" content="Find your perfect used car at AutoDeals. Browse our extensive inventory of quality pre-owned vehicles with transparent pricing, financing options, and excellent customer service.">
+    <meta property="og:image" content="https://autodeals.com/images/logo-social.png">
+    <meta property="og:url" content="https://autodeals.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AutoDeals - Used Car Purchase Website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quality Used Cars for Sale - Best Deals on Pre-Owned Vehicles">
+    <meta name="twitter:description" content="Find your perfect used car at AutoDeals. Browse our extensive inventory of quality pre-owned vehicles with transparent pricing, financing options, and excellent customer service.">
+    <meta name="twitter:image" content="https://autodeals.com/images/logo-social.png">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#3498db">
+    <meta name="msapplication-TileColor" content="#3498db">
+    
+    <link rel="stylesheet" href="../css/theme-default.css" id="theme-link">
+</head>
+<body>
+    <header>
+        <div class="theme-switcher">
+            <select id="theme-select" class="theme-select">
+                <option value="default">Default Theme</option>
+                <option value="dark">Dark Theme</option>
+                <option value="light">Light Theme</option>
+            </select>
+        </div>
+        <div class="logo-text" style="font-size: 2rem; font-weight: bold; color: #3498db; margin-bottom: 0.5rem;" role="banner" aria-label="AutoDeals Logo">🚗 AutoDeals</div>
+        <h1>Used Car Purchase Website</h1>
+        <p>Find Your Perfect Pre-Owned Vehicle</p>
+    </header>
+
+    <nav>
+        <button class="menu-toggle">☰</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="cars.php">Cars</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="market-trends.html">Market Trends</a></li>
+            <li><a href="calculator.php">Loan Calculator</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="help.php">Help</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Welcome to Our Used Car Dealership</h2>
+        <p>We specialize in quality pre-owned vehicles with verified history and reliable service. Browse our extensive inventory of cars, trucks, and SUVs.</p>
+        
+        <section>
+            <h3>Featured Vehicles</h3>
+            <p>Check out our latest arrivals and featured vehicles. All cars come with detailed inspection reports and warranty options.</p>
+            <p><a href="cars.php" style="background-color: var(--secondary-color); color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Browse Our Car Inventory →</a></p>
+        </section>
+        
+        <section>
+            <h3>Why Choose Us?</h3>
+            <ul>
+                <li>Comprehensive vehicle inspections</li>
+                <li>Competitive pricing</li>
+                <li>Financing options available</li>
+                <li>Professional customer service</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Used Car Purchase Website. All rights reserved.</p>
+        <p>123 Auto Sales Drive, Cartown, CA 12345 | Phone: (555) 123-4567</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/theme-switcher.js"></script>
+    <script>
+        // Video loading functionality
+        function loadVideo() {
+            const placeholder = document.getElementById('promotional-video');
+            const youtubeVideo = document.getElementById('youtube-video');
+            
+            // Hide placeholder and show YouTube video
+            placeholder.style.display = 'none';
+            youtubeVideo.style.display = 'block';
+            
+            // Optional: Track video engagement
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'video_play', {
+                    'event_category': 'engagement',
+                    'event_label': 'promotional_video'
+                });
+            }
+        }
+        
+        // Intersection Observer for video lazy loading
+        if ('IntersectionObserver' in window) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const videoContainer = entry.target;
+                        videoContainer.classList.add('in-view');
+                    }
+                });
+            });
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                const videoContainer = document.querySelector('.video-container');
+                if (videoContainer) {
+                    videoObserver.observe(videoContainer);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

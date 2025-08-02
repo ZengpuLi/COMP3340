@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Generator</title>
+    <style>
+        canvas { border: 1px solid #ddd; margin: 10px; }
+        .preview { display: inline-block; margin: 10px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>AutoDeals Favicon Generator</h2>
+    <div class="preview">
+        <canvas id="favicon32" width="32" height="32"></canvas>
+        <p>32x32 Favicon</p>
+    </div>
+    <div class="preview">
+        <canvas id="favicon16" width="16" height="16"></canvas>
+        <p>16x16 Favicon</p>
+    </div>
+    
+    <script>
+        function createFavicon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#3498db';
+            ctx.fillRect(0, 0, size, size);
+            
+            // Car shape
+            const scale = size / 32;
+            ctx.fillStyle = 'white';
+            
+            // Car body
+            ctx.fillRect(4*scale, 12*scale, 24*scale, 8*scale);
+            
+            // Car top
+            ctx.fillRect(8*scale, 8*scale, 16*scale, 8*scale);
+            
+            // Wheels
+            ctx.beginPath();
+            ctx.arc(10*scale, 22*scale, 3*scale, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(22*scale, 22*scale, 3*scale, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Letter A
+            ctx.fillStyle = '#3498db';
+            ctx.font = `bold ${8*scale}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.fillText('A', 16*scale, 14*scale);
+        }
+        
+        createFavicon('favicon32', 32);
+        createFavicon('favicon16', 16);
+        
+        // Download function
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        document.getElementById('favicon32').onclick = () => downloadCanvas('favicon32', 'favicon-32x32.png');
+        document.getElementById('favicon16').onclick = () => downloadCanvas('favicon16', 'favicon-16x16.png');
+    </script>
+    <p>Click on the favicon images to download them as PNG files.</p>
+</body>
+</html>

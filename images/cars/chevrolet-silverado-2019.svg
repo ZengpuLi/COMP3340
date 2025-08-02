@@ -1,0 +1,10 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#f1f2f6"/>
+  <rect x="15" y="50" width="270" height="90" fill="#4169e1" rx="8"/>
+  <circle cx="70" cy="160" r="22" fill="#333"/>
+  <circle cx="230" cy="160" r="22" fill="#333"/>
+  <rect x="30" y="70" width="70" height="50" fill="#333" rx="3"/>
+  <rect x="200" y="80" width="80" height="40" fill="#1e90ff" rx="3"/>
+  <text x="150" y="40" font-family="Arial" font-size="16" fill="#333" text-anchor="middle">Chevrolet Silverado 2019</text>
+  <text x="150" y="190" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Full-Size Pickup</text>
+</svg>

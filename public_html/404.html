@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found (404) - AutoDeals</title>
+    <meta name="description" content="The page you're looking for could not be found. Return to AutoDeals homepage to browse our quality used cars.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://autodeals.com/">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#3498db">
+    
+    <link rel="stylesheet" href="../css/theme-default.css" id="theme-link">
+    
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .error-code {
+            font-size: 6rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+        
+        .error-description {
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .error-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .error-btn:hover {
+            background: var(--primary-color-dark);
+            transform: translateY(-2px);
+        }
+        
+        .error-btn.secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .error-btn.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-text" style="font-size: 2rem; font-weight: bold; color: #3498db; margin-bottom: 0.5rem;" role="banner" aria-label="AutoDeals Logo">🚗 AutoDeals</div>
+        <h1>Used Car Purchase Website</h1>
+        <p>Find Your Perfect Pre-Owned Vehicle</p>
+    </header>
+
+    <main>
+        <div class="error-container">
+            <div class="error-code">404</div>
+            <div class="error-message">Page Not Found</div>
+            <div class="error-description">
+                Sorry, the page you're looking for doesn't exist or has been moved. 
+                Don't worry though, we have plenty of great cars waiting for you!
+            </div>
+            <div class="error-actions">
+                <a href="../index.html" class="error-btn">🏠 Go Home</a>
+                <a href="../cars.php" class="error-btn secondary">🚗 Browse Cars</a>
+                <a href="../contact.html" class="error-btn secondary">📞 Contact Us</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Used Car Purchase Website. All rights reserved.</p>
+        <p>123 Auto Sales Drive, Cartown, CA 12345 | Phone: (555) 123-4567</p>
+    </footer>
+
+    <script>
+        // Track 404 errors for analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_title': '404 - Page Not Found',
+                'page_location': window.location.href,
+                'custom_parameter': 'error_page'
+            });
+        }
+    </script>
+</body>
+</html>

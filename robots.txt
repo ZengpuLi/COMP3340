@@ -1,0 +1,52 @@
+# AutoDeals Robot Instructions
+# Used Car Purchase Website - SEO Configuration
+
+User-agent: *
+Allow: /
+
+# Allow important pages
+Allow: /public_html/
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Block sensitive areas
+Disallow: /php/
+Disallow: /sql/
+Disallow: /admin/
+Disallow: /uploads/private/
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.bak$
+
+# Block user-specific pages
+Disallow: /profile.php
+Disallow: /favorites.php
+Disallow: /purchases.php
+Disallow: /logout.php
+
+# Block form handlers
+Disallow: /*?action=
+Disallow: /*?token=
+Disallow: /*?csrf_token=
+
+# Allow common crawlers to access CSS and JS
+User-agent: Googlebot
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+User-agent: Bingbot  
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+User-agent: facebookexternalhit
+Allow: /
+Allow: /images/
+
+# Sitemap location
+Sitemap: https://autodeals.com/sitemap.xml
+
+# Crawl delay for politeness
+Crawl-delay: 1
