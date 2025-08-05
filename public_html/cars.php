@@ -70,7 +70,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cars - Used Car Purchase Website</title>
-    <link rel="stylesheet" href="../css/theme-default.css" id="theme-link">
+    <link rel="stylesheet" href="css/theme-default.css" id="theme-link">
 </head>
 <body>
     <header>
@@ -109,7 +109,15 @@ try {
             <?php if (!empty($cars)): ?>
                 <?php foreach ($cars as $car): ?>
                 <div class="car-card">
-                    <img src="<?php echo sanitizeOutput($car['image']); ?>" alt="<?php echo sanitizeOutput($car['name']); ?>" class="car-image">
+                    <?php 
+                    // Ensure image path is correct
+                    $image_path = $car['image'];
+                    if (!str_starts_with($image_path, 'images/')) {
+                        $image_path = 'images/cars/' . basename($image_path);
+                    }
+                    ?>
+                    <img src="<?php echo sanitizeOutput($image_path); ?>" alt="<?php echo sanitizeOutput($car['name']); ?>" class="car-image" 
+                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNhciBJbWFnZTwvdGV4dD4KPC9zdmc+'";
                     <div class="car-details">
                         <h3 class="car-name"><?php echo sanitizeOutput($car['name']); ?></h3>
                         <p class="car-price"><?php echo formatPrice($car['price']); ?></p>
@@ -175,8 +183,8 @@ try {
         <p>123 Auto Sales Drive, Cartown, CA 12345 | Phone: (555) 123-4567</p>
     </footer>
 
-    <script src="../js/main.js"></script>
-    <script src="../js/theme-switcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/theme-switcher.js"></script>
     <?php if (isLoggedIn()): ?>
     <script>
         // User Features JavaScript for logged-in users
