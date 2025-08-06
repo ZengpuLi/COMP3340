@@ -5,8 +5,8 @@
  */
 
 // Include required dependencies
-require_once 'config.php';
-require_once 'session.php';
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/session.php';
 
 /**
  * Check if a car is in user's favorites

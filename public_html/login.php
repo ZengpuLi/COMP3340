@@ -5,8 +5,9 @@
  */
 
 // Include session management
-require_once '../php/session.php';
-require_once '../php/config.php';
+require_once 'php/session.php';
+require_once 'php/config.php';
+require_once 'php/navigation.php';
 
 // Redirect if already logged in
 redirectIfLoggedIn();
@@ -102,19 +103,7 @@ $csrf_token = generateCSRFToken();
         <p>Welcome Back!</p>
     </header>
 
-    <nav>
-        <button class="menu-toggle">☰</button>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="cars.php">Cars</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="help.php">Help</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="login.php" class="active">Login</a></li>
-            <li><a href="register.php">Register</a></li>
-        </ul>
-    </nav>
+    <?php echo generateNavigation('login.php'); ?>
 
     <main>
         <div class="auth-container">
@@ -150,12 +139,6 @@ $csrf_token = generateCSRFToken();
             
             <div class="auth-links">
                 <p>Don't have an account? <a href="register.php">Create one here</a></p>
-            </div>
-            
-            <div class="demo-accounts">
-                <h3>Demo Accounts</h3>
-                <p><strong>Admin:</strong> admin / admin123</p>
-                <p><strong>User:</strong> testuser / user123</p>
             </div>
         </div>
     </main>

@@ -5,8 +5,9 @@
  */
 
 // Include session management
-require_once '../php/session.php';
-require_once '../php/config.php';
+require_once 'php/session.php';
+require_once 'php/config.php';
+require_once 'php/navigation.php';
 
 // Redirect if already logged in
 redirectIfLoggedIn();
@@ -164,19 +165,7 @@ $csrf_token = generateCSRFToken();
         <p>Create Your Account</p>
     </header>
 
-    <nav>
-        <button class="menu-toggle">☰</button>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="cars.php">Cars</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="help.php">Help</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="register.php" class="active">Register</a></li>
-        </ul>
-    </nav>
+    <?php echo generateNavigation('register.php'); ?>
 
     <main>
         <div class="auth-container">

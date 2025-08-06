@@ -6,7 +6,7 @@
 
 // Database configuration constants
 define('DB_HOST', 'localhost');
-define('DB_USERNAME', 'lizengp_U-bAZ5K6p0VuqQMfQ23L9QbvDdqTEuLD');
+define('DB_USERNAME', 'lizengp_car');
 define('DB_PASSWORD', 'GLFmzjMeGTuv2B3YQxWq');  // Change this to your MySQL password
 define('DB_NAME', 'lizengp_car');
 define('DB_CHARSET', 'utf8mb4');
